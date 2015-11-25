@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_item1"
+            android:checked="true"
+            android:icon="@drawable/ic_mail_black"
+            android:title="@string/app_name"
+            app:showAsAction="always" />
+
+        <item
+            android:id="@+id/menu_item2"
+            android:icon="@drawable/ic_mail_black"
+            android:title="@string/app_name"
+            app:showAsAction="always" />
+
+        <item
+            android:id="@+id/menu_item3"
+            android:icon="@drawable/ic_mail_black"
+            android:title="@string/app_name"
+            app:showAsAction="always">
+
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/menu_item4"
+                        android:icon="@drawable/ic_mail_black"
+                        android:title="@string/app_name"
+                        app:showAsAction="always" />
+
+                    <item
+                        android:id="@+id/menu_item5"
+                        android:icon="@drawable/ic_mail_black"
+                        android:title="@string/app_name"
+                        app:showAsAction="always" />
+                </group>
+            </menu>
+
+        </item>
+
+        <item
+            android:icon="@drawable/ic_mail_black"
+            android:title="@string/app_name"
+            app:showAsAction="always">
+
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:icon="@drawable/ic_mail_black"
+                        android:title="@string/app_name"
+                        app:showAsAction="always" />
+
+                    <item
+                        android:icon="@drawable/ic_mail_black"
+                        android:title="@string/app_name"
+                        app:showAsAction="always" />
+                </group>
+            </menu>
+
+        </item>
+
+        <item android:title="@string/app_name">
+
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:icon="@drawable/ic_mail_black"
+                        android:title="@string/app_name"
+                        app:showAsAction="always" />
+
+                    <item
+                        android:icon="@drawable/ic_mail_black"
+                        android:title="@string/app_name"
+                        app:showAsAction="always" />
+                </group>
+            </menu>
+
+        </item>
+
+    </group>
+</menu>

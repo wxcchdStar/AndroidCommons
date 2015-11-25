@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Android 4.3, 会紧贴右边 -->
+    <dimen name="fab_margin_end">16dp</dimen>
+    <dimen name="fab_margin_bottom">16dp</dimen>
+
+</resources>
