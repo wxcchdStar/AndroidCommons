@@ -3,15 +3,27 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="android:textColorPrimary">@color/text_dark_primary</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:navigationBarColor">@color/navigationColor</item>-->
+        <item name="colorControlNormal">@color/colorAccent</item>
     </style>
 
-    <style name="MainAppTheme" parent="AppTheme">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <!-- 解决2.3上title是黑色的问题, 其他组件的颜色也会随之改变 -->
+        <!--<item name="android:textColorPrimary">@android:color/white</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar.Translucent" parent="AppTheme.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--<item name="android:windowIsFloating">true</item>-->
     </style>
 
 </resources>

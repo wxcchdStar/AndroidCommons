@@ -1,55 +1,66 @@
 package wxc.android.commons;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import wxc.android.commons.utils.V;
+
 public abstract class BaseActivity extends AppCompatActivity {
-    private static final int ON_CREATE      = 1;
-    private static final int ON_START       = 2;
-    private static final int ON_RESUME      = 3;
-    private static final int ON_PAUSE       = 4;
-    private static final int ON_STOP        = 5;
-    private static final int ON_DESTROY     = 6;
-    private static final int ON_SAVE_STATE  = 7;
+    private static final int ON_CREATE = 1;
+    private static final int ON_START = 2;
+    private static final int ON_RESUME = 3;
+    private static final int ON_PAUSE = 4;
+    private static final int ON_STOP = 5;
+    private static final int ON_DESTROY = 6;
+    private static final int ON_SAVE_STATE = 7;
 
-    private ArrayList<ActivityLifecycleCallbacks> mActivityLifecycleCallbacks = new ArrayList<>();
+    protected ActionBar mActionBar;
 
-    public void registerActivityLifecycleCallbacks(ActivityLifecycleCallbacks callbacks) {
-        if (callbacks != null) {
-            mActivityLifecycleCallbacks.add(callbacks);
-        }
+    private boolean mDestroyed;
+
+    private ArrayList<ActivityCallbacks> mActivityCallbacks = new ArrayList<>();
+
+    public void startActivity(Class<? extends Activity> clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
     }
-
-    public void unRegisterActivityLifecycleCallbacks(ActivityLifecycleCallbacks callbacks) {
-        if (callbacks != null) {
-            mActivityLifecycleCallbacks.remove(callbacks);
-        }
-    }
-
-    /**
-     * 注册Activity监听回调接口
-     * @return
-     */
-    protected abstract ActivityLifecycleCallbacks[] newActivityLifecycleCallbacks();
-
-    /**
-     * 调用{@link {@link Activity#setContentView(int)}及其重载方法
-     */
-    protected abstract void setContentView();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView();
-        ActivityLifecycleCallbacks[] callbacksArr = newActivityLifecycleCallbacks();
+        setContentView(getLayoutResId());
+        initToolbar();
+        ActivityCallbacks[] callbacksArr = newActivityLifecycleCallbacks();
         if (callbacksArr != null && callbacksArr.length > 0) {
-            mActivityLifecycleCallbacks.addAll(Arrays.asList(callbacksArr));
+            mActivityCallbacks.addAll(Arrays.asList(callbacksArr));
             onLifecycleCallbacks(ON_CREATE, savedInstanceState);
         }
+    }
+
+    protected abstract int getLayoutResId();
+
+    protected ActivityCallbacks[] newActivityLifecycleCallbacks() {
+        return new ActivityCallbacks[0];
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = V.f(this, R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            mActionBar = getSupportActionBar();
+        }
+    }
+
+    public boolean isDestroyed() {
+        return mDestroyed;
     }
 
     @Override
@@ -79,9 +90,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mDestroyed = true;
         onLifecycleCallbacks(ON_DESTROY);
-        if (mActivityLifecycleCallbacks != null) {
-            mActivityLifecycleCallbacks.clear();
+        if (mActivityCallbacks != null) {
+            mActivityCallbacks.clear();
         }
     }
 
@@ -91,13 +103,41 @@ public abstract class BaseActivity extends AppCompatActivity {
         onLifecycleCallbacks(ON_SAVE_STATE, outState);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        } else {
+            if (mActivityCallbacks != null) {
+                for (ActivityCallbacks callbacks : mActivityCallbacks) {
+                    if (callbacks != null) {
+                        callbacks.onOptionsItemSelected(item);
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mActivityCallbacks != null) {
+            for (ActivityCallbacks callbacks : mActivityCallbacks) {
+                if (callbacks != null) {
+                    callbacks.onActivityResult(requestCode, resultCode, data);
+                }
+            }
+        }
+    }
+
     private void onLifecycleCallbacks(int level) {
         onLifecycleCallbacks(level, null);
     }
 
     private void onLifecycleCallbacks(int level, Bundle savedInstanceState) {
-        if (mActivityLifecycleCallbacks != null) {
-            for (ActivityLifecycleCallbacks callbacks : mActivityLifecycleCallbacks) {
+        if (mActivityCallbacks != null) {
+            for (ActivityCallbacks callbacks : mActivityCallbacks) {
                 if (callbacks != null) {
                     switch (level) {
                         case ON_CREATE:
@@ -127,56 +167,41 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public interface ActivityLifecycleCallbacks {
-        void onCreate(Bundle savedInstanceState);
+    public static class ActivityCallbacks {
 
-        void onStart();
-
-        void onResume();
-
-        void onPause();
-
-        void onStop();
-
-        void onDestroy();
-
-        void onSaveSate(Bundle outState);
-    }
-
-    public static class SimpleActivityLifecycleCallbacks implements ActivityLifecycleCallbacks {
-
-        @Override
         public void onCreate(Bundle savedInstanceState) {
 
         }
 
-        @Override
         public void onStart() {
 
         }
 
-        @Override
         public void onResume() {
 
         }
 
-        @Override
         public void onPause() {
 
         }
 
-        @Override
         public void onStop() {
 
         }
 
-        @Override
         public void onDestroy() {
 
         }
 
-        @Override
         public void onSaveSate(Bundle savedInstanceState) {
+
+        }
+
+        public void onOptionsItemSelected(MenuItem item) {
+
+        }
+
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         }
     }

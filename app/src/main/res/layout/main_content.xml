@@ -49,7 +49,7 @@
             android:id="@+id/tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <!-- 1. toolbar底部阴影 -->
         <!--<View-->
@@ -163,6 +163,7 @@
         android:layout_marginEnd="@dimen/fab_margin_end"
         android:layout_marginRight="@dimen/fab_margin_end"
         android:src="@drawable/ic_plus"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:layout_behavior="wxc.android.commons.view.FabBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

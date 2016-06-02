@@ -1,5 +1,6 @@
 package wxc.android.commons;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,8 +11,6 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,24 +23,15 @@ public class MainActivity extends BaseActivity {
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override
-    protected ActivityLifecycleCallbacks[] newActivityLifecycleCallbacks() {
-        return new ActivityLifecycleCallbacks[0];
-    }
-
-    @Override
-    protected void setContentView() {
-        setContentView(R.layout.activity_main);
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // init toolbar
-        Toolbar toolbar = V.f(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        mActionBar.setDisplayHomeAsUpEnabled(true);
         // init drawer
         mDrawerLayout = V.f(this, R.id.dl_drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, null, 0, 0) {
@@ -61,13 +51,13 @@ public class MainActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 item.setChecked(true);
+                startActivity(SwipeDismissActivity.class);
                 return true;
             }
         });
         // init fab
         final CoordinatorLayout contentCl = V.f(this, R.id.cl_content);
         FloatingActionButton fab = V.f(this, R.id.fab_button);
-//        ((ViewGroup.MarginLayoutParams) fab.getLayoutParams()).rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +77,7 @@ public class MainActivity extends BaseActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
         // init title
         final CollapsingToolbarLayout barCtl = V.f(this, R.id.collapsingToolbarLayout);
-        barCtl.setTitle(toolbar.getTitle());
+        barCtl.setTitle(mActionBar.getTitle());
     }
 
     @Override
