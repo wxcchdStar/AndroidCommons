@@ -4,6 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidCommons.iml" filepath="$PROJECT_DIR$/AndroidCommons.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_api_retrofit/lib_api_retrofit.iml" filepath="$PROJECT_DIR$/lib_api_retrofit/lib_api_retrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_api_rxretrofit/lib_api_rxretrofit.iml" filepath="$PROJECT_DIR$/lib_api_rxretrofit/lib_api_rxretrofit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_api_volley/lib_api_volley.iml" filepath="$PROJECT_DIR$/lib_api_volley/lib_api_volley.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_base/lib_base.iml" filepath="$PROJECT_DIR$/lib_base/lib_base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_downloader/lib_downloader.iml" filepath="$PROJECT_DIR$/lib_downloader/lib_downloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
     </modules>
   </component>
 </project>

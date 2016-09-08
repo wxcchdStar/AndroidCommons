@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import wxc.android.commons.base.BaseActivity;
 import wxc.android.commons.utils.V;
 
 public class MainActivity extends BaseActivity {
@@ -21,8 +22,11 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    @Presenter
+    private BasePresenter mPresenter = new BasePresenter();
+
     @Override
-    protected int getLayoutResId() {
+    protected int getLayoutId() {
         return R.layout.activity_main;
     }
 

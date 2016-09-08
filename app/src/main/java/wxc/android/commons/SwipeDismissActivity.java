@@ -6,12 +6,13 @@ import android.support.design.widget.SwipeDismissBehavior;
 import android.view.View;
 import android.view.ViewGroup;
 
+import wxc.android.commons.base.BaseActivity;
 import wxc.android.commons.utils.V;
 
 public class SwipeDismissActivity extends BaseActivity {
 
     @Override
-    protected int getLayoutResId() {
+    protected int getLayoutId() {
         return R.layout.activity_swipe_dismiss;
     }
 

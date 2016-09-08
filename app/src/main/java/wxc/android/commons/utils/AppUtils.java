@@ -1,10 +1,15 @@
 package wxc.android.commons.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 
-import wxc.android.commons.BaseActivity;
+import java.io.File;
+
+import wxc.android.commons.base.BaseActivity;
 
 public class AppUtils {
 
@@ -28,5 +33,15 @@ public class AppUtils {
             e.printStackTrace();
         }
         return versionName;
+    }
+
+    public static void installApk(Context context, File file) {
+        Intent intent = new Intent();
+        if (!(context instanceof Activity)) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        intent.setAction(android.content.Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        context.startActivity(intent);
     }
 }

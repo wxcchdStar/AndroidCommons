@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':lib_api_retrofit', ':lib_base', ':lib_utils', ':lib_api_rxretrofit', ':lib_api_volley', ':lib_downloader'

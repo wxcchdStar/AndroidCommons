@@ -1,0 +1,37 @@
+public class ReportReq extends BaseApiRequest<ReportReq.ReqParams, Boolean> {
+    public static final String REPORT = "report";
+
+    public static class ReqParams {
+        public String mImei;
+        public String mModel;
+        public String mEmail;
+        public String mReason;
+        public int mType;
+        public int mId;
+    }
+
+    public ReportReq(Context ctx, ParseJsonResponseListener.ResultListener<Boolean> listener,
+                     ParseJsonResponseListener.ApiErrorListener errorListener) {
+        super(ctx, listener, errorListener);
+    }
+
+    @Override
+    protected void initApiNameAndTag() {
+        mApiName = REPORT;
+    }
+
+    @Override
+    protected void fillRequestParams(JSONObject jsonParams) throws JSONException {
+        jsonParams.put(Params.TYPE, mParams.mType);
+        jsonParams.put(Params.ID, mParams.mId);
+        jsonParams.put(Params.IMEI, mParams.mImei);
+        jsonParams.put(Params.MODEL, mParams.mModel);
+        jsonParams.put(Params.EMAIL, mParams.mEmail);
+        jsonParams.put(Params.REASON, mParams.mReason);
+    }
+
+    @Override
+    protected Boolean parseJsonToResult(JSONObject jsonResponse) {
+        return true;
+    }
+}
