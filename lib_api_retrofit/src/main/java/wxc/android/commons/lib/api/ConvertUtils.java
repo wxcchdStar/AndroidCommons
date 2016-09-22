@@ -1,8 +1,13 @@
 package wxc.android.commons.lib.api;
 
+import java.io.File;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class ConvertUtils {
 
@@ -25,5 +30,15 @@ public class ConvertUtils {
             }
         }
         return returnMap;
+    }
+
+    // 不确定文件类型时调用
+    public static MultipartBody.Part convertToPartBody(String key, File file) {
+        return convertToPartBody(key, "application/otcet-stream", file);
+    }
+
+    public static MultipartBody.Part convertToPartBody(String key, String mediaType, File file) {
+        RequestBody requestFile = RequestBody.create(MediaType.parse(mediaType), file);
+        return MultipartBody.Part.createFormData(key, file.getName(), requestFile);
     }
 }

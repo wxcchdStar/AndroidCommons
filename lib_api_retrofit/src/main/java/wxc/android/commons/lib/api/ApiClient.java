@@ -4,18 +4,19 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     public static int sCodeOk = 200;
-    protected static String sBaseUrl;
+    private static String sBaseUrl;
 
     private static volatile ApiClient sInstance;
 
-    protected Retrofit mRetrofit;
+    private Retrofit mRetrofit;
 
-    protected ApiClient() {
+    private ApiClient() {
         if (sBaseUrl == null) {
             throw new IllegalArgumentException("The sBaseUrl is NULL!");
         }
@@ -34,7 +35,7 @@ public class ApiClient {
         return sInstance;
     }
 
-    protected Retrofit.Builder createBuilder() {
+    private Retrofit.Builder createBuilder() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor logger = new HttpLoggingInterceptor();
@@ -56,6 +57,14 @@ public class ApiClient {
 
     public <T> T createApi(Class<T> clazz) {
         return mRetrofit.create(clazz);
+    }
+
+    public static <T> T getApi(Class<T> apiClass) {
+        return getInstance().createApi(apiClass);
+    }
+
+    public static <T> void execute(Call<ApiResult<T>> call, ApiCallback<T> callback) {
+        call.enqueue(new InternalCallback<>(callback));
     }
 
 }

@@ -5,6 +5,30 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/lib_api_retrofit" />
+            <option value="$PROJECT_DIR$/lib_api_rxretrofit" />
+            <option value="$PROJECT_DIR$/lib_api_volley" />
+            <option value="$PROJECT_DIR$/lib_base" />
+            <option value="$PROJECT_DIR$/lib_downloader" />
+            <option value="$PROJECT_DIR$/lib_utils" />
+          </set>
+        </option>
+        <option name="myModules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/lib_api_retrofit" />
+            <option value="$PROJECT_DIR$/lib_api_rxretrofit" />
+            <option value="$PROJECT_DIR$/lib_api_volley" />
+            <option value="$PROJECT_DIR$/lib_base" />
+            <option value="$PROJECT_DIR$/lib_downloader" />
+            <option value="$PROJECT_DIR$/lib_utils" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>

@@ -36,7 +36,7 @@ public class InternalCallback<T> implements Callback<ApiResult<T>> {
 
     @Override
     public void onFailure(Call<ApiResult<T>> call, Throwable t) {
-        Log.e("InternalCallback", "onFailure", t);
+        Log.w("InternalCallback", "onFailure", t);
         // 网络请求失败, 请检查网络
         ApiCallback<T> callback = mCallbackRef.get();
         if (callback != null) {

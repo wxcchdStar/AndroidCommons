@@ -1,4 +1,4 @@
-package wxc.android.commons.utils;
+package wxc.android.commons.lib.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

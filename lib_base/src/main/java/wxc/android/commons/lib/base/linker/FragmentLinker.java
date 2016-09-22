@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.linker;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.View;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
+import wxc.android.commons.lib.base.BaseFragment;
+import wxc.android.commons.lib.base.BaseFragmentPresenter;
+import wxc.android.commons.lib.base.Presenter;
 
 public class FragmentLinker extends BaseFragmentPresenter {
 

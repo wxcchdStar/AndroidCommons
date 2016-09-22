@@ -10,7 +10,7 @@ public class RxTestApi {
                 RxApiClient.get(Api.class).getTopMovie(0, 1),
                 subscriber);
 
-        // 还可以取消
+        // also cancel request
         subscriber.unsubscribe();
     }
 

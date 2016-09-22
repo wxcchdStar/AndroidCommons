@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader;
+package wxc.android.commons.lib.downloader.internal;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

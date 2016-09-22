@@ -7,6 +7,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import wxc.android.commons.lib.downloader.internal.DownloadUtils;
+
 public class DownloadTask {
     // 下载状态列表
     public static final int STATE_NULL          = 0;  // 没有状态
@@ -16,7 +18,7 @@ public class DownloadTask {
     public static final int STATE_DOWNLOADING   = 4;  // 下载中
     public static final int STATE_FINISH        = 5;  // 下载完成
     public static final int STATE_FAILED        = 6;  // 下载失败
-    public static final int STATE_CANCEL        = 10; // 下载取消
+    public static final int STATE_CANCEL        = 7;  // 下载取消
 
     // 下载文件ID
     public int mId;

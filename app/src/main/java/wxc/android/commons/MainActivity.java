@@ -14,8 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import wxc.android.commons.base.BaseActivity;
-import wxc.android.commons.utils.V;
+import wxc.android.commons.lib.base.BaseActivity;
+import wxc.android.commons.lib.base.BaseActivityPresenter;
+import wxc.android.commons.lib.base.Presenter;
 
 public class MainActivity extends BaseActivity {
 
@@ -23,7 +24,7 @@ public class MainActivity extends BaseActivity {
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Presenter
-    private BasePresenter mPresenter = new BasePresenter();
+    private BaseActivityPresenter mPresenter = new BaseActivityPresenter();
 
     @Override
     protected int getLayoutId() {
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // init toolbar
-        mActionBar.setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // init drawer
         mDrawerLayout = V.f(this, R.id.dl_drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, null, 0, 0) {
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
         // init title
         final CollapsingToolbarLayout barCtl = V.f(this, R.id.collapsingToolbarLayout);
-        barCtl.setTitle(mActionBar.getTitle());
+        barCtl.setTitle(getSupportActionBar().getTitle());
     }
 
     @Override

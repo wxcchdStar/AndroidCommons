@@ -15,7 +15,6 @@ import java.util.Locale;
 
 import wxc.android.commons.lib.downloader.DownloadException;
 import wxc.android.commons.lib.downloader.DownloadTask;
-import wxc.android.commons.lib.downloader.DownloadUtils;
 import wxc.android.commons.lib.downloader.IDownloader;
 
 public class AsyncDownloader implements IDownloader, Runnable {

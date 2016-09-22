@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import wxc.android.commons.lib.base.linker.FragmentLinker;
+
 public abstract class BaseFragment extends Fragment {
 
     private FragmentLinker mLinker = new FragmentLinker();

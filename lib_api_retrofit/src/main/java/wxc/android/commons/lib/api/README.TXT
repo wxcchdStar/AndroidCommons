@@ -1,19 +1,6 @@
-package wxc.android.commons.lib.api;
-
-import java.io.File;
-import java.lang.reflect.Method;
-import java.util.Map;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.http.FieldMap;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.Query;
-
+####################################################################################################
+# 方案一
+####################################################################################################
 public class ApiTemplate {
     /**
      * The same as method name of {@link Api}
@@ -29,6 +16,9 @@ public class ApiTemplate {
      */
     @SuppressWarnings("unchecked")
     public static <T> void request(String action, ApiCallback<T> callback, Object... args) {
+        if (callback instanceof ProgressApiCallback) {
+            ((ProgressApiCallback) callback).showDialog();
+        }
         Api api = ApiClient.getInstance().createApi(Api.class);
         Method[] methods = api.getClass().getDeclaredMethods();
         if (methods != null) {
@@ -80,3 +70,37 @@ public class ApiTemplate {
         Call<ApiResult<Void>> upload(@Part MultipartBody.Part file);
     }
 }
+
+####################################################################################################
+# 方案二
+####################################################################################################
+public class ApiTemplate {
+
+    /**
+     * request params, it will be converted to Map
+     */
+    public static class TestParams implements ApiParams {
+        public String mParam1;
+        public int mParam2;
+        public String mParam3;
+    }
+
+    @Api
+    public interface InternalApi {
+
+        @POST("api/test")
+        Call<ApiResult<Void>> test(@Query("token") String token, @FieldMap Map<String, Object> map);
+
+        @POST("api/upload")
+        @Multipart
+        Call<ApiResult<Void>> upload(@Part MultipartBody.Part file);
+    }
+}
+
+Call<ApiResult<Void>> call = ApiClient.getApi(InternalApi.class)
+                .test("token", ConvertUtils.convertToMap(new TestParams()));
+ApiClient.execute(call, callback);
+
+####################################################################################################
+Input: API name, request type, request params, response data
+Output: Java file

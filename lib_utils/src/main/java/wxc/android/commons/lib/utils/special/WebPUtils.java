@@ -1,4 +1,4 @@
-package wxc.android.commons.utils;
+package wxc.android.commons.lib.utils.special;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

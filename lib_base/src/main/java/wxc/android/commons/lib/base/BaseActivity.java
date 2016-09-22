@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import wxc.android.commons.lib.base.linker.ActivityLinker;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private boolean mDestroyed;
@@ -91,6 +93,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void addPresenter(BaseActivityPresenter presenter) {
         mLinker.addActivityCallbacks(presenter);
+    }
+
+    /**
+     * 判断Activity是否可用，常用于耗时操作结束后对UI进行更新时
+     *
+     * @param activity BaseActivity
+     * @return true-可用, false-不可用
+     */
+    public static boolean isAvailable(BaseActivity activity) {
+        return activity != null && !activity.isDestroyed() && !activity.isFinishing();
     }
 
 }

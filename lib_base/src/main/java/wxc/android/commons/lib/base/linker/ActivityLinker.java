@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.linker;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,10 @@ import android.view.MenuItem;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
+import wxc.android.commons.lib.base.BaseActivity;
+import wxc.android.commons.lib.base.BaseActivityPresenter;
+import wxc.android.commons.lib.base.Presenter;
 
 public class ActivityLinker extends BaseActivityPresenter {
 

@@ -6,8 +6,7 @@ import android.support.design.widget.SwipeDismissBehavior;
 import android.view.View;
 import android.view.ViewGroup;
 
-import wxc.android.commons.base.BaseActivity;
-import wxc.android.commons.utils.V;
+import wxc.android.commons.lib.base.BaseActivity;
 
 public class SwipeDismissActivity extends BaseActivity {
 
@@ -19,8 +18,8 @@ public class SwipeDismissActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setTitle("SwipeDismiss");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("SwipeDismiss");
         // init swipe dismiss, 2.3上没有滑动效果
         ViewGroup contentFl = V.f(this, R.id.fl_content);
         SwipeDismissBehavior<View> swipeDismissBehavior = new SwipeDismissBehavior<>();

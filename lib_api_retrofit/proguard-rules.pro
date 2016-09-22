@@ -15,7 +15,5 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--keepnames class * implements wxc.android.commons.lib.api.ApiParams {
-    *;
-}
+-keepnames class * implements wxc.android.commons.lib.api.ApiParams {*;}
 -keep class wxc.android.commons.lib.api.**Api {*;}
