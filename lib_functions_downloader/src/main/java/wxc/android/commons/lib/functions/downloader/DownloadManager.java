@@ -1,8 +1,8 @@
-package wxc.android.commons.lib.downloader;
+package wxc.android.commons.lib.functions.downloader;
 
 import android.content.Context;
 
-import wxc.android.commons.lib.downloader.internal.DownloadScheduler;
+import wxc.android.commons.lib.functions.downloader.internal.DownloadScheduler;
 
 public final class DownloadManager {
 

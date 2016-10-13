@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader.internal;
+package wxc.android.commons.lib.functions.downloader.internal;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import wxc.android.commons.lib.downloader.DownloadListener;
-import wxc.android.commons.lib.downloader.DownloadService;
-import wxc.android.commons.lib.downloader.DownloadTask;
-import wxc.android.commons.lib.downloader.IDownloadNotification;
+import wxc.android.commons.lib.functions.downloader.DownloadListener;
+import wxc.android.commons.lib.functions.downloader.DownloadService;
+import wxc.android.commons.lib.functions.downloader.DownloadTask;
+import wxc.android.commons.lib.functions.downloader.IDownloadNotification;
 
 public class DownloadScheduler implements DownloadListener {
     private Context mContext;

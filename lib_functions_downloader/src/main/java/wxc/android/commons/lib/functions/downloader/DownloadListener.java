@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader;
+package wxc.android.commons.lib.functions.downloader;
 
 /**
  * 下载监听器

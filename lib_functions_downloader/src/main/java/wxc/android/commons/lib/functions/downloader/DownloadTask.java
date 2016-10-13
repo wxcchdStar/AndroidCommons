@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader;
+package wxc.android.commons.lib.functions.downloader;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,29 +7,31 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import wxc.android.commons.lib.downloader.internal.DownloadUtils;
+import wxc.android.commons.lib.functions.downloader.internal.DownloadUtils;
 
 public class DownloadTask {
     // 下载状态列表
-    public static final int STATE_NULL          = 0;  // 没有状态
-    public static final int STATE_WAIT          = 1;  // 等待下载
-    public static final int STATE_START         = 2;  // 开始下载
-    public static final int STATE_CONNECTING    = 3;  // 正在连接
-    public static final int STATE_DOWNLOADING   = 4;  // 下载中
-    public static final int STATE_FINISH        = 5;  // 下载完成
-    public static final int STATE_FAILED        = 6;  // 下载失败
-    public static final int STATE_CANCEL        = 7;  // 下载取消
+    public static final int STATE_NULL = 0;  // 没有状态
+    public static final int STATE_WAIT = 1;  // 等待下载
+    public static final int STATE_START = 2;  // 开始下载
+    public static final int STATE_CONNECTING = 3;  // 正在连接
+    public static final int STATE_DOWNLOADING = 4;  // 下载中
+    public static final int STATE_FINISH = 5;  // 下载完成
+    public static final int STATE_FAILED = 6;  // 下载失败
+    public static final int STATE_CANCEL = 7;  // 下载取消
 
     // 下载文件ID
     public int mId;
     /**
-     * 下载类型
+     * The type of files directory to return. May be {@code null}
+     * for the root of the files directory or one of the following
+     * constants for a subdirectory:
      * {@link android.os.Environment#DIRECTORY_MUSIC},
      * {@link android.os.Environment#DIRECTORY_PODCASTS},
      * {@link android.os.Environment#DIRECTORY_RINGTONES},
      * {@link android.os.Environment#DIRECTORY_ALARMS},
      * {@link android.os.Environment#DIRECTORY_NOTIFICATIONS},
-     * {@link android.os.Environment#DIRECTORY_PICTURES},
+     * {@link android.os.Environment#DIRECTORY_PICTURES}, or
      * {@link android.os.Environment#DIRECTORY_MOVIES}.
      */
     public String mType;

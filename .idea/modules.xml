@@ -8,7 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/lib_api_rxretrofit/lib_api_rxretrofit.iml" filepath="$PROJECT_DIR$/lib_api_rxretrofit/lib_api_rxretrofit.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_api_volley/lib_api_volley.iml" filepath="$PROJECT_DIR$/lib_api_volley/lib_api_volley.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_base/lib_base.iml" filepath="$PROJECT_DIR$/lib_base/lib_base.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib_downloader/lib_downloader.iml" filepath="$PROJECT_DIR$/lib_downloader/lib_downloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_functions_downloader/lib_functions_downloader.iml" filepath="$PROJECT_DIR$/lib_functions_downloader/lib_functions_downloader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_functions_update_version/lib_functions_update_version.iml" filepath="$PROJECT_DIR$/lib_functions_update_version/lib_functions_update_version.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
     </modules>
   </component>

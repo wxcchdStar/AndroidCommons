@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader.internal;
+package wxc.android.commons.lib.functions.downloader.internal;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

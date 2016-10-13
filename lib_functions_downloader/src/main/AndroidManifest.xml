@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="wxc.android.commons.lib.functions.downloader">
+
+    <application>
+
+        <service android:name=".DownloadService" />
+
+    </application>
+
+</manifest>

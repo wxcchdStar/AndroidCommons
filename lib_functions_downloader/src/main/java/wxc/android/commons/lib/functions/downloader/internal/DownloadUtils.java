@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader.internal;
+package wxc.android.commons.lib.functions.downloader.internal;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -13,19 +13,17 @@ import java.io.File;
 public class DownloadUtils {
 
     /**
-     *
      * @param context 上下文
-     *
-     * @param type 存储目录类型
-     *
-     * {@link android.os.Environment#DIRECTORY_MUSIC},
-     * {@link android.os.Environment#DIRECTORY_PODCASTS},
-     * {@link android.os.Environment#DIRECTORY_RINGTONES},
-     * {@link android.os.Environment#DIRECTORY_ALARMS},
-     * {@link android.os.Environment#DIRECTORY_NOTIFICATIONS},
-     * {@link android.os.Environment#DIRECTORY_PICTURES},
-     * {@link android.os.Environment#DIRECTORY_MOVIES}.
-     *
+     * @param type    The type of files directory to return. May be {@code null}
+     *                for the root of the files directory or one of the following
+     *                constants for a subdirectory:
+     *                {@link android.os.Environment#DIRECTORY_MUSIC},
+     *                {@link android.os.Environment#DIRECTORY_PODCASTS},
+     *                {@link android.os.Environment#DIRECTORY_RINGTONES},
+     *                {@link android.os.Environment#DIRECTORY_ALARMS},
+     *                {@link android.os.Environment#DIRECTORY_NOTIFICATIONS},
+     *                {@link android.os.Environment#DIRECTORY_PICTURES}, or
+     *                {@link android.os.Environment#DIRECTORY_MOVIES}.
      * @return 存储路径
      */
     public static String getStorageDir(Context context, String type) {

@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader.internal;
+package wxc.android.commons.lib.functions.downloader.internal;
 
 import android.content.Context;
 import android.os.Process;
@@ -13,9 +13,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 
-import wxc.android.commons.lib.downloader.DownloadException;
-import wxc.android.commons.lib.downloader.DownloadTask;
-import wxc.android.commons.lib.downloader.IDownloader;
+import wxc.android.commons.lib.functions.downloader.DownloadException;
+import wxc.android.commons.lib.functions.downloader.DownloadTask;
+import wxc.android.commons.lib.functions.downloader.IDownloader;
 
 public class AsyncDownloader implements IDownloader, Runnable {
     // 反馈下载进度的时间间隔

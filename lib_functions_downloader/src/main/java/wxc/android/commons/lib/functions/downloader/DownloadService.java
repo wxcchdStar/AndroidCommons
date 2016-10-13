@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.downloader;
+package wxc.android.commons.lib.functions.downloader;
 
 import android.app.Service;
 import android.content.Intent;
