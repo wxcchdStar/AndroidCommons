@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.app.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,11 +9,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import wxc.android.commons.lib.base.linker.FragmentLinker;
+import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
+import wxc.android.commons.lib.base.app.presenter.linker.FragmentLinker;
 
 public abstract class BaseFragment extends Fragment {
 
     private FragmentLinker mLinker = new FragmentLinker();
+
+    private CompositeSubscription mCompositeSubscription;
 
     @Override
     public void onAttach(Context context) {
@@ -72,6 +76,9 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         mLinker.onDestroyView();
+        if (mCompositeSubscription != null) {
+            mCompositeSubscription.unsubscribe();
+        }
     }
 
     @Override
@@ -99,4 +106,12 @@ public abstract class BaseFragment extends Fragment {
         super.onSaveInstanceState(outState);
         mLinker.onSaveInstanceState(outState);
     }
+
+    public void addSubscription(Subscription subscription) {
+        if (mCompositeSubscription == null) {
+            mCompositeSubscription = new CompositeSubscription();
+        }
+        mCompositeSubscription.add(subscription);
+    }
+
 }

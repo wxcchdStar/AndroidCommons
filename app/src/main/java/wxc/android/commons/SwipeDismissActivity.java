@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import wxc.android.commons.lib.base.BaseActivity;
+import wxc.android.commons.lib.utils.V;
 
 public class SwipeDismissActivity extends BaseActivity {
 

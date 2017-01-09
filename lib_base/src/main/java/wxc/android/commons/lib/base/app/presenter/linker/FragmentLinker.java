@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base.linker;
+package wxc.android.commons.lib.base.app.presenter.linker;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-import wxc.android.commons.lib.base.BaseFragment;
-import wxc.android.commons.lib.base.BaseFragmentPresenter;
-import wxc.android.commons.lib.base.Presenter;
+import wxc.android.commons.lib.base.app.fragment.BaseFragment;
+import wxc.android.commons.lib.base.app.presenter.BaseFragmentPresenter;
+import wxc.android.commons.lib.base.app.presenter.Presenter;
 
 public class FragmentLinker extends BaseFragmentPresenter {
 
@@ -73,6 +73,18 @@ public class FragmentLinker extends BaseFragmentPresenter {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         onLifecycleCallbacks(ON_CREATE, savedInstanceState);
+    }
+
+    @Override
+    public void initContentView(View view) {
+        super.initContentView(view);
+        onLifecycleCallbacks(ON_CREATE_VIEW, view);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        onLifecycleCallbacks(ON_ACTIVITY_CREATED, savedInstanceState);
     }
 
     @Override

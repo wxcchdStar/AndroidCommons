@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/lib_functions_downloader" />
             <option value="$PROJECT_DIR$/lib_functions_update_version" />
             <option value="$PROJECT_DIR$/lib_utils" />
+            <option value="$PROJECT_DIR$/lib_view_toast" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

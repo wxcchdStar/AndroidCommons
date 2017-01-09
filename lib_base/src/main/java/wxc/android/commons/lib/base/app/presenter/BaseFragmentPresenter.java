@@ -1,9 +1,11 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.app.presenter;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+
+import wxc.android.commons.lib.base.app.fragment.BaseFragment;
 
 public abstract class BaseFragmentPresenter {
 

@@ -85,7 +85,6 @@ public class ApiTemplate {
         public String mParam3;
     }
 
-    @Api
     public interface InternalApi {
 
         @POST("api/test")

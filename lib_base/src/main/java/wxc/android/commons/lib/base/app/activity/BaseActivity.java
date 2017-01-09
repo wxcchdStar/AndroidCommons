@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.app.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import wxc.android.commons.lib.base.linker.ActivityLinker;
+import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
+import wxc.android.commons.lib.base.app.presenter.BaseActivityPresenter;
+import wxc.android.commons.lib.base.app.presenter.linker.ActivityLinker;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     private boolean mDestroyed;
 
     private ActivityLinker mLinker = new ActivityLinker();
+
+    private CompositeSubscription mCompositeSubscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +57,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         mDestroyed = true;
-        super.onDestroy();
         mLinker.onDestroy();
+        // 取消注册，以避免内存泄露
+        if (mCompositeSubscription != null) {
+            mCompositeSubscription.unsubscribe();
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -93,6 +102,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void addPresenter(BaseActivityPresenter presenter) {
         mLinker.addActivityCallbacks(presenter);
+    }
+
+    public void addSubscription(Subscription subscription) {
+        if (mCompositeSubscription == null) {
+            mCompositeSubscription = new CompositeSubscription();
+        }
+        mCompositeSubscription.add(subscription);
     }
 
     /**

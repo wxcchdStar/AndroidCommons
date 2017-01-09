@@ -1,8 +1,10 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.app.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import wxc.android.commons.lib.base.app.activity.BaseActivity;
 
 public class BaseActivityPresenter {
 

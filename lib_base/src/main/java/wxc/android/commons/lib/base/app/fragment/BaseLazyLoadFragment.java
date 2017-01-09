@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.app.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

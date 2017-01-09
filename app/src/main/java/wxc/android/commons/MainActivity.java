@@ -17,6 +17,7 @@ import android.view.View;
 import wxc.android.commons.lib.base.BaseActivity;
 import wxc.android.commons.lib.base.BaseActivityPresenter;
 import wxc.android.commons.lib.base.Presenter;
+import wxc.android.commons.lib.utils.V;
 
 public class MainActivity extends BaseActivity {
 

@@ -1,4 +1,4 @@
-package wxc.android.commons.lib.base;
+package wxc.android.commons.lib.base.app.presenter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
