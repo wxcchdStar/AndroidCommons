@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "wxc.android.commons"
         minSdkVersion 14
@@ -22,4 +22,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:design:24.1.1'
     testCompile 'junit:junit:4.12'
+    compile project(':lib_base')
 }
